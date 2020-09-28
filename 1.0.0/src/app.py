@@ -29,9 +29,8 @@ class logger(AppBase):
 
 
     async def clearlog(self):
-        os.system('touch shuffle_log.txt')
-        os.system('sshpass -p ' + '123456' + ' scp /shuffle_log.txt ' + '10.245.142.21:/root')
-        time.sleep(10)
+        os.system('touch /home/shuffle_log.txt')
+        os.system('sshpass -p ' + '123456' + ' scp /home/shuffle_log.txt ' + '10.245.142.21:/root')
         return "OK!!"
 
 
