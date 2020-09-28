@@ -14,7 +14,7 @@ class logger(AppBase):
         fp = open('/home/shuffle_log.txt', 'a')
         nowtime = datetime.datetime.now()
         str_time = nowtime.strftime("%Y-%m-%d %X")
-        fp.write(appname+' finished in: '+str_time )
+        fp.write(appname+' finished in: '+str_time+'\n' )
         fp.close()
         os.system('sshpass -p '+'123456'+ ' scp /home/shuffle_log.txt '+'10.245.142.21:/root')
         os.system('rm -r /home/shuffle_log.txt')
@@ -25,12 +25,16 @@ class logger(AppBase):
         time.sleep(10)
         fp = open('/home/shuffle_log.txt', 'r')
         str=fp.read()
+        fp.close()
         return str
 
 
     async def clearlog(self):
-        os.system('touch /home/shuffle_log.txt')
+        os.system('sshpass -p ' + '123456' + ' scp 10.245.142.21:/root/shuffle_log.txt ' + '/home')
+        fp = open('/home/shuffle_log.txt', 'w')
+        fp.close()
         os.system('sshpass -p ' + '123456' + ' scp /home/shuffle_log.txt ' + '10.245.142.21:/root')
+        os.system('rm -r /home/shuffle_log.txt')
         return "OK!!"
 
 
