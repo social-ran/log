@@ -13,9 +13,9 @@ actions:
     parameters:
       - name: appname
         description: appname
-        multiline: false
         required: true
-        example: mall
+        multiline: false
+        example: "mall"
         schema:
           type: string
     returns:
