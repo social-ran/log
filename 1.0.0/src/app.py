@@ -17,7 +17,7 @@ class logger(AppBase):
         fp.write(appname+' finished in: '+str_time )
         fp.close()
         os.system('sshpass -p '+'hitimc@ics'+ ' scp /home/shuffle_log.txt '+'10.245.142.242:/root')
-        os.system('rm -r post_info.json')
+        os.system('rm -r /home/shuffle_log.txt')
         return "OK!!"
 
     async def readlog(self):
